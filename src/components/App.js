@@ -1,10 +1,18 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Main from './Main';
+import Magnifier from './Magnifier';
+import NoMatch from './NoMatch';
 
 function App() {
   return (
-    <div>
-      <h1>hello</h1>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Main} />
+        <Route exact path="/check" component={Magnifier} />
+        <Route component={NoMatch} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
