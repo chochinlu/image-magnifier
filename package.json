@@ -1,8 +1,12 @@
 {
   "name": "image-magnifier",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "https://myusername.github.io/image-magnifier",
+  "author": "Cho-Ching Lu <chochinlu@gmail.com>",
+  "license": "MIT",
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-image-magnify": "^2.7.4",
@@ -13,6 +17,8 @@
     "styled-system": "^4.2.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
