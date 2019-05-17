@@ -66,6 +66,8 @@ const numToPercent = rate => ({
 });
 
 const Magnifier = props => {
+  const [loading, setLoading] = useState(false);
+
   const [oriImageDimention, setOriImageDimention] = useState({
     width: 0,
     height: 0
@@ -75,12 +77,14 @@ const Magnifier = props => {
   const [enlargeRate, setEnlargeRate] = useState({ x: 2, y: 1.5 });
 
   useEffect(() => {
+    setLoading(true);
     let image = new Image(); // or document.createElement('img')
     image.onload = function() {
       const width = this.width;
       const height = this.height;
       // console.log({ width, height });
       setOriImageDimention({ width, height });
+      setLoading(false);
     };
     image.src = imageSource[props.match.params.img];
 
@@ -92,7 +96,7 @@ const Magnifier = props => {
       image.onload = function() {};
       image = null;
     };
-  });
+  }, [props.match.params.img]);
 
   const handleSmallImageRate = e => {
     e.preventDefault();
@@ -167,13 +171,14 @@ const Magnifier = props => {
       {/* 小圖大圖 */}
       <Flex p={3} justifyContent="center">
         <Box width={['100vw', '100vw', '100vw']}>
+          {loading && <h1>Loading...</h1>}
           <ImageView
             source={imageSource[props.match.params.img]}
             smallImageRate={smallImageRate}
             oriImageDimention={oriImageDimention}
             enlargeRate={numToPercent(enlargeRate)}
           />
-          <Pre>{JSON.stringify(oriImageDimention, null, 2)}</Pre>
+          {!loading && <Pre>{JSON.stringify(oriImageDimention, null, 2)}</Pre>}
         </Box>
       </Flex>
     </Box>
