@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Heading, Box, Flex, Text } from 'rebass';
-import { Label, Input, StyledLink } from './style';
+import { Label, Input, StyledLink, Pre } from './style';
 import ReactImageMagnify from 'react-image-magnify';
 
 const Slider = ({ title, min, max, step, value, onChange }) => (
@@ -28,21 +28,27 @@ const Slider = ({ title, min, max, step, value, onChange }) => (
 
 const imageSource = {
   nasa:
-    'https://images-assets.nasa.gov/image/iss036e009053/iss036e009053~orig.jpg'
+    'https://images-assets.nasa.gov/image/iss036e009053/iss036e009053~orig.jpg',
+  hass: 'https://cdn.hasselblad.com/samples/B0000994.jpg'
 };
 
-const ImageView = ({ smallImageRate, oriImageDimention, enlargeRate }) => (
+const ImageView = ({
+  source,
+  smallImageRate,
+  oriImageDimention,
+  enlargeRate
+}) => (
   <ReactImageMagnify
     {...{
       smallImage: {
         alt: 'Wristwatch by Ted Baker London',
         isFluidWidth: false,
-        src: imageSource.nasa,
+        src: source,
         width: oriImageDimention.width * smallImageRate,
         height: oriImageDimention.height * smallImageRate
       },
       largeImage: {
-        src: imageSource.nasa,
+        src: source,
         width: oriImageDimention.width,
         height: oriImageDimention.height
       },
@@ -162,11 +168,12 @@ const Magnifier = props => {
       <Flex p={3} justifyContent="center">
         <Box width={['100vw', '100vw', '100vw']}>
           <ImageView
+            source={imageSource[props.match.params.img]}
             smallImageRate={smallImageRate}
             oriImageDimention={oriImageDimention}
             enlargeRate={numToPercent(enlargeRate)}
           />
-          {/* <Pre>{JSON.stringify(oriImageDimention, null, 2)}</Pre> */}
+          <Pre>{JSON.stringify(oriImageDimention, null, 2)}</Pre>
         </Box>
       </Flex>
     </Box>
