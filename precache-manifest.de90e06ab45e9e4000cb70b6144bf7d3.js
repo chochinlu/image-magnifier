@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1aa34fb076348cc2726aae0a50647fc7",
+    "revision": "4e97f7035403fb89335787a4cbe05bd9",
     "url": "/image-magnifier/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/image-magnifier/static/js/2.e9bc8905.chunk.js"
   },
   {
-    "revision": "4f13b97b0180a7c326c6",
-    "url": "/image-magnifier/static/js/main.f14ba386.chunk.js"
+    "revision": "8e86aba387febd3f898e",
+    "url": "/image-magnifier/static/js/main.abef3783.chunk.js"
   },
   {
     "revision": "fb9dce758e9c029596e6",
