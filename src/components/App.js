@@ -12,7 +12,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <BrowserRouter>
+        <BrowserRouter basename="image-magnifier">
           <Switch>
             <Route exact path="/" component={Main} />
             <Route exact path="/check/:img" component={Magnifier} />
